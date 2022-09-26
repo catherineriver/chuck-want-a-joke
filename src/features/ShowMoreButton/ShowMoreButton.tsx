@@ -1,27 +1,18 @@
 import * as React from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../../app/store";
-import useLocalStorage from "../../app/useLocalStorage";
 import {useAppDispatch} from "../../app/hooks";
-import {fetchJokeFromCategory} from "../Main/mainSlice";
-import {unwrapResult} from "@reduxjs/toolkit";
+import {fetchJokeFromCategory} from "./showMoreSlice";
 import {Button} from "@mui/material";
 
 
-const MoreButton: React.FC = () => {
+const ShowMoreButton: React.FC = () => {
     const category = useSelector((state: RootState) => state.data.joke.categories)
-    const { previousCategory, addToLocalStorage } = useLocalStorage();
     const dispatch = useAppDispatch();
 
     const handleClick = (value: string) => {
         dispatch(fetchJokeFromCategory(value))
-            .then(unwrapResult)
-            .then((originalPromiseResult) => {
-                addToLocalStorage(value);
-            })
-            .catch((rejectedValueOrSerializedError) => {
-                // handle result here
-            })
+        localStorage.setItem('category', value);
     }
 
     return (
@@ -29,8 +20,8 @@ const MoreButton: React.FC = () => {
             variant="contained"
             onClick={() => handleClick(category)}
         >
-            {category}
+            {category ? `tell me joke about ${category}` : 'make me laugh'}
         </Button>
     );
 };
-export default MoreButton;
+export default ShowMoreButton;

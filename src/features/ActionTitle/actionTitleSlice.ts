@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const initialValue = JSON.parse(localStorage.getItem('category') as string) || 'food';
+const initialValue = localStorage.getItem('category') as string;
 
 type Data = string[];
 type Joke = {
@@ -10,10 +10,10 @@ type Joke = {
 
 const initialState = {
     data: [] as Data,
-    status: 'idle',
+    loading: false,
     error: null,
     joke: {
-        categories: initialValue,
+        categories: initialValue || 'food',
         value: '',
     } as Joke
 }
@@ -29,26 +29,26 @@ export const fetchJokeFromCategory = createAsyncThunk('category/fetchData',
         return response.json();
     });
 
-export const mainSlice = createSlice({
+export const actionTitleSlice = createSlice({
     name: 'data',
     initialState,
     reducers: {
 
     },
     extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
+        builder.addCase(fetchCategories.pending, (state, action) => {
+            state.loading = true
+        })
         builder.addCase(fetchCategories.fulfilled, (state, action) => {
-            // Add user to the state array
             state.data.push(action.payload)
         })
+        builder.addCase(fetchJokeFromCategory.pending, (state, action) => {
+            state.loading = true
+        })
         builder.addCase(fetchJokeFromCategory.fulfilled, (state, action) => {
-            // Add user to the state array
             state.joke = action.payload;
         })
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { } = mainSlice.actions
-
-export default mainSlice.reducer
+export default actionTitleSlice.reducer

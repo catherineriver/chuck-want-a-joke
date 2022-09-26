@@ -1,16 +1,15 @@
 import * as React from 'react';
 import PageTitle from "../../components/PageTitle/PageTitle";
 import {Container} from "@mui/material";
-import RandomJoke from "../../features/RandomJoke/RandomJoke";
 
-const Random = () => {
+const About = () => {
 
     return (
         <Container maxWidth="xl">
-            <PageTitle title="Random" />
-            <RandomJoke />
+            <PageTitle title="About" />
+            About
         </Container>
     );
 };
 
-export default Random;
+export default About;

@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import actionTitleSlice from '../features/ActionTitle/actionTitleSlice';
+import actionGetJokeSlice from '../features/ShowMoreButton/showMoreSlice';
+import actionGetRandomJoke from '../features/RandomJoke/randomJokeSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    data: actionTitleSlice,
+    joke: actionGetJokeSlice,
+    random_joke: actionGetRandomJoke
   },
 });
 
