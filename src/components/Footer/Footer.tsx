@@ -1,21 +1,21 @@
-import * as React from 'react';
-import {Container, Box, Button} from "@mui/material";
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import PinterestIcon from '@mui/icons-material/Pinterest';
+import * as React from 'react'
+import { Container, Box, Button } from '@mui/material'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import PinterestIcon from '@mui/icons-material/Pinterest'
 
 const Footer = () => {
-
-    return (
+  return (
         <Box
             sx={{
-                position: 'fixed',
-                bottom: 0,
-                width: '100%',
-                flexGrow: 1, display: { md: 'flex' }
+              position: 'fixed',
+              bottom: 0,
+              width: '100%',
+              flexGrow: 1,
+              display: { md: 'flex' }
             }}
         >
-        <Container maxWidth="xl" component='footer'>
+            <Container maxWidth="xl" component='footer'>
                 <Button
                     component='a'
                     href='https://www.instagram.com/chucknorris/'
@@ -37,9 +37,8 @@ const Footer = () => {
                 >
                     <PinterestIcon />
                 </Button>
-        </Container>
+            </Container>
         </Box>
-
-    );
-};
-export default Footer;
+  )
+}
+export default Footer
