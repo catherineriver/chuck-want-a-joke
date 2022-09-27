@@ -4,8 +4,9 @@ import { RandomJokeState } from '../../app/types'
 const initialState: RandomJokeState = {
   status: 'idle',
   joke: {
-    value: ''
-  }
+    value: null
+  },
+  error: null
 }
 
 export const fetchRandomJoke = createAsyncThunk('random_joke/fetch',
@@ -30,6 +31,7 @@ export const actionGetRandomJoke = createSlice({
     })
     builder.addCase(fetchRandomJoke.rejected, (state, action) => {
       state.status = 'failed'
+      state.error = action.error.message
     })
   }
 })

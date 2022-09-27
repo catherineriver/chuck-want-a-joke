@@ -43,7 +43,7 @@ const ActionTitle: React.FC<ActionTitleProps> = ({ previousCategory, categories 
                               }
                             }}
                             onChange={handleChange}
-                            value={previousCategory || 'food' }>
+                            value={previousCategory || categories[0] }>
                                 {categories.map((item) =>
                                     <MenuItem key={item} value={item}>
                                         {item}

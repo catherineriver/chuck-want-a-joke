@@ -8,8 +8,9 @@ const initialState: StateProps = {
   status: 'idle',
   previousCategory: initialValue,
   joke: {
-    value: ''
-  }
+    value: null
+  },
+  error: null
 }
 
 export const fetchCategories = createAsyncThunk('data/fetchData', async () => {
@@ -37,6 +38,10 @@ export const actionGetData = createSlice({
       state.status = 'succeeded'
       state.categories = action.payload
     })
+    builder.addCase(fetchCategories.rejected, (state, action) => {
+      state.status = 'failed'
+      state.error = action.error.message
+    })
     builder.addCase(fetchJokeFromCategory.pending, (state, action) => {
       state.status = 'pending'
     })
@@ -44,6 +49,10 @@ export const actionGetData = createSlice({
       state.status = 'succeeded'
       state.previousCategory = action.payload.categories[0]
       state.joke.value = action.payload.value
+    })
+    builder.addCase(fetchJokeFromCategory.rejected, (state, action) => {
+      state.status = 'failed'
+      state.error = action.error.message
     })
   }
 })

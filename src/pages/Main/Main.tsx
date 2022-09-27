@@ -58,13 +58,13 @@ const Main: React.FC = () => {
                     <>
                         <ActionTitle previousCategory={previousCategory} categories={categories} />
                         {error !== null && 'Sorry, no jokes. Try to reload page'}
-                        {joke &&
+                        {joke.value &&
                             <Box sx={{ width: { md: '50%', xs: '100%' }, py: 3, my: 2 }}>
                                 <Joke value={joke.value}/>
                             </Box>
                         }
                          <Box my={3}>
-                            <ShowMoreButton previousCategory={previousCategory} />
+                            <ShowMoreButton previousCategory={previousCategory} initialCategory={categories[0]} />
                          </Box>
                     </>
                 }

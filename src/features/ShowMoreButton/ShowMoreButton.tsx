@@ -5,15 +5,16 @@ import { Button } from '@mui/material'
 import { useState } from 'react'
 
 interface ButtonProps {
-  previousCategory: string
+  previousCategory?: string
+  initialCategory: string
 }
 
-const ShowMoreButton: React.FC<ButtonProps> = ({ previousCategory }) => {
+const ShowMoreButton: React.FC<ButtonProps> = ({ previousCategory, initialCategory }) => {
   const [error, setError] = useState(null)
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
-    dispatch(fetchJokeFromCategory(previousCategory))
+    dispatch(fetchJokeFromCategory(previousCategory || initialCategory))
       .then(() => localStorage.updateItem('category', previousCategory))
       .catch(error => setError(error))
   }
