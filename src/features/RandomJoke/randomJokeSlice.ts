@@ -1,11 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { StateProps } from '../../app/types'
-const initialValue = localStorage.getItem('category') as string
+import { RandomJokeState } from '../../app/types'
 
-const initialState: StateProps = {
-  categories: [],
+const initialState: RandomJokeState = {
   status: 'idle',
-  previousCategory: initialValue,
   joke: {
     value: ''
   }

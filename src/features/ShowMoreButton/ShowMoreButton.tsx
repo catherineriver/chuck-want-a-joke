@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useAppDispatch } from '../../app/hooks'
-import { fetchJokeFromCategory } from './showMoreSlice'
+import { fetchJokeFromCategory } from '../../app/appSlice'
 import { Button } from '@mui/material'
 import { useState } from 'react'
 

@@ -7,16 +7,14 @@ import Box from '@mui/material/Box'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
 import { useEffect, useState } from 'react'
-import { fetchCategories } from '../../features/ActionTitle/actionTitleSlice'
+import { fetchCategories } from '../../app/appSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
 import { useAppDispatch } from '../../app/hooks'
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch()
   const { previousCategory, joke } = useSelector((state: RootState) => state.data)
-  console.log(joke)
   const [categories, setCategories] = useState([])
-  const [fetchedJoke, setFetchedJoke] = useState<string>('')
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -26,10 +24,6 @@ const Main: React.FC = () => {
         setCategories(originalPromiseResult)
       }).catch(error => setError(error))
   }, [])
-
-  useEffect(() => {
-    setFetchedJoke(joke.value)
-  }, [joke])
 
   return (
         <Box sx={{
@@ -64,11 +58,11 @@ const Main: React.FC = () => {
                     <>
                         <ActionTitle previousCategory={previousCategory} categories={categories} />
                         {error !== null && 'Sorry, no jokes. Try to reload page'}
-
+                        {joke &&
                             <Box sx={{ width: { md: '50%', xs: '100%' }, py: 3, my: 2 }}>
-                                <Joke value={fetchedJoke} />
+                                <Joke value={joke.value}/>
                             </Box>
-
+                        }
                          <Box my={3}>
                             <ShowMoreButton previousCategory={previousCategory} />
                          </Box>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PageTitle from '../../components/PageTitle/PageTitle'
 import Select from '@mui/material/Select'
-import { fetchJokeFromCategory } from './actionTitleSlice'
+import { fetchJokeFromCategory } from '../../app/appSlice'
 import { useAppDispatch } from '../../app/hooks'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'

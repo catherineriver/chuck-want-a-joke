@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { StateProps } from '../../app/types'
+import { StateProps } from './types'
 
 const initialValue = localStorage.getItem('category') as string
 
@@ -23,7 +23,7 @@ export const fetchJokeFromCategory = createAsyncThunk('category/fetchData',
     return await response.json()
   })
 
-export const actionTitleSlice = createSlice({
+export const actionGetData = createSlice({
   name: 'data',
   initialState,
   reducers: {
@@ -35,7 +35,7 @@ export const actionTitleSlice = createSlice({
     })
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.status = 'succeeded'
-      state.categories.push(action.payload)
+      state.categories = action.payload
     })
     builder.addCase(fetchJokeFromCategory.pending, (state, action) => {
       state.status = 'pending'
@@ -48,4 +48,4 @@ export const actionTitleSlice = createSlice({
   }
 })
 
-export default actionTitleSlice.reducer
+export default actionGetData.reducer

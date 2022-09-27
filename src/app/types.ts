@@ -5,6 +5,11 @@ export interface StateProps {
   previousCategory: string
 }
 
+export interface RandomJokeState {
+  status: 'idle' | 'pending' | 'succeeded' | 'failed'
+  joke: JokeTypes
+}
+
 export interface JokeTypes {
   value: string
   category?: string

@@ -26,12 +26,7 @@ const RandomJoke: React.FC = () => {
             {status === 'succeeded' ? <Joke value={joke.value}/> : <CircularProgress />}
             {error !== null && 'Sorry, no jokes today'}
             <Box my={3} alignContent='center'>
-                <Button
-                    variant="contained"
-                    onClick={handleFetch}
-                >
-                    another one
-                </Button>
+                <Button variant="contained" onClick={handleFetch}>another one</Button>
             </Box>
         </Box>
   )
