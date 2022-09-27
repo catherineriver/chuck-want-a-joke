@@ -1,9 +1,16 @@
 export interface StateProps {
-    joke: Joke,
-    status: 'idle' | 'pending' | 'succeeded' | 'failed'
+  status: 'idle' | 'pending' | 'succeeded' | 'failed'
+  joke: JokeTypes
+  categories: string[]
+  previousCategory: string
 }
 
-export type Joke = {
-    value: string,
-    categories: string,
+export interface JokeTypes {
+  value: string
+  category?: string
+}
+
+export interface ActionTitleProps {
+  categories: string[]
+  previousCategory: string
 }

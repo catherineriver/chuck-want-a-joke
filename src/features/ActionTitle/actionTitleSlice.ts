@@ -1,54 +1,51 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { StateProps } from '../../app/types'
 
-const initialValue = localStorage.getItem('category') as string;
+const initialValue = localStorage.getItem('category') as string
 
-type Data = string[];
-type Joke = {
-    value: string,
-    categories: string,
-};
-
-const initialState = {
-    data: [] as Data,
-    loading: false,
-    error: null,
-    joke: {
-        categories: initialValue || 'food',
-        value: '',
-    } as Joke
+const initialState: StateProps = {
+  categories: [],
+  status: 'idle',
+  previousCategory: initialValue,
+  joke: {
+    value: ''
+  }
 }
 
 export const fetchCategories = createAsyncThunk('data/fetchData', async () => {
-    const response = await fetch('https://api.chucknorris.io/jokes/categories')
-    return response.json();
-});
+  const response = await fetch('https://api.chucknorris.io/jokes/categories')
+  return await response.json()
+})
 
 export const fetchJokeFromCategory = createAsyncThunk('category/fetchData',
-    async (category: string) => {
-        const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
-        return response.json();
-    });
+  async (category: string) => {
+    const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
+    return await response.json()
+  })
 
 export const actionTitleSlice = createSlice({
-    name: 'data',
-    initialState,
-    reducers: {
+  name: 'data',
+  initialState,
+  reducers: {
 
-    },
-    extraReducers: (builder) => {
-        builder.addCase(fetchCategories.pending, (state, action) => {
-            state.loading = true
-        })
-        builder.addCase(fetchCategories.fulfilled, (state, action) => {
-            state.data.push(action.payload)
-        })
-        builder.addCase(fetchJokeFromCategory.pending, (state, action) => {
-            state.loading = true
-        })
-        builder.addCase(fetchJokeFromCategory.fulfilled, (state, action) => {
-            state.joke = action.payload;
-        })
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCategories.pending, (state, action) => {
+      state.status = 'pending'
+    })
+    builder.addCase(fetchCategories.fulfilled, (state, action) => {
+      state.status = 'succeeded'
+      state.categories.push(action.payload)
+    })
+    builder.addCase(fetchJokeFromCategory.pending, (state, action) => {
+      state.status = 'pending'
+    })
+    builder.addCase(fetchJokeFromCategory.fulfilled, (state, action) => {
+      state.status = 'succeeded'
+      state.previousCategory = action.payload.categories[0]
+      state.joke.value = action.payload.value
+    })
+  }
 })
 
 export default actionTitleSlice.reducer

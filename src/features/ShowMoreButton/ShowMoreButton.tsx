@@ -1,27 +1,30 @@
-import * as React from 'react';
-import {useSelector} from "react-redux";
-import {RootState} from "../../app/store";
-import {useAppDispatch} from "../../app/hooks";
-import {fetchJokeFromCategory} from "./showMoreSlice";
-import {Button} from "@mui/material";
+import * as React from 'react'
+import { useAppDispatch } from '../../app/hooks'
+import { fetchJokeFromCategory } from './showMoreSlice'
+import { Button } from '@mui/material'
+import { useState } from 'react'
 
+interface ButtonProps {
+  previousCategory: string
+}
 
-const ShowMoreButton: React.FC = () => {
-    const category = useSelector((state: RootState) => state.data.joke.categories)
-    const dispatch = useAppDispatch();
+const ShowMoreButton: React.FC<ButtonProps> = ({ previousCategory }) => {
+  const [error, setError] = useState(null)
+  const dispatch = useAppDispatch()
 
-    const handleClick = (value: string) => {
-        dispatch(fetchJokeFromCategory(value))
-        localStorage.setItem('category', value);
-    }
+  const handleClick = () => {
+    dispatch(fetchJokeFromCategory(previousCategory))
+      .then(() => localStorage.updateItem('category', previousCategory))
+      .catch(error => setError(error))
+  }
 
-    return (
+  return (
         <Button
             variant="contained"
-            onClick={() => handleClick(category)}
+            onClick={handleClick}
         >
-            {category ? `tell me joke about ${category}` : 'make me laugh'}
+            {previousCategory ? `tell me joke about ${previousCategory}` : 'make me laugh'}
         </Button>
-    );
-};
-export default ShowMoreButton;
+  )
+}
+export default ShowMoreButton

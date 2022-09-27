@@ -1,38 +1,38 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import { Link as RouterLink } from 'react-router-dom';
-import MenuItem from '@mui/material/MenuItem';
-import SportsGymnasticsSharpIcon from '@mui/icons-material/SportsGymnasticsSharp';
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import Link from '@mui/material/Link'
+import MenuIcon from '@mui/icons-material/Menu'
+import Container from '@mui/material/Container'
+import { Link as RouterLink } from 'react-router-dom'
+import MenuItem from '@mui/material/MenuItem'
+import SportsGymnasticsSharpIcon from '@mui/icons-material/SportsGymnasticsSharp'
 
 const pages = [{
-        title: 'random',
-        url: 'random'
-    },
-    {
-        title: 'about Chuck Norris',
-        url: 'about'
-    }];
+  title: 'random',
+  url: 'random'
+},
+{
+  title: 'about Chuck Norris',
+  url: 'about'
+}]
 
 const Header = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null)
 
-    const handleOpenNavMenu = (event: any) => {
-        setAnchorElNav(event.currentTarget);
-    };
+  const handleOpenNavMenu = (event: any) => {
+    setAnchorElNav(event.currentTarget)
+  }
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null)
+  }
 
-    return (
+  return (
         <AppBar position="static" color='transparent'>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -61,18 +61,18 @@ const Header = () => {
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
+                              vertical: 'bottom',
+                              horizontal: 'left'
                             }}
                             keepMounted
                             transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
+                              vertical: 'top',
+                              horizontal: 'left'
                             }}
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                                display: { xs: 'block', md: 'none' },
+                              display: { xs: 'block', md: 'none' }
                             }}
                         >
                             {pages.map((page) => (
@@ -81,7 +81,7 @@ const Header = () => {
                                         component={RouterLink}
                                         textAlign="center"
                                         to={`/${page.url}`}
-                                        sx={{ textTransform: 'uppercase'}}
+                                        sx={{ textTransform: 'uppercase' }}
                                     >{page.title}</Typography>
                                 </MenuItem>
                             ))}
@@ -113,6 +113,6 @@ const Header = () => {
                 </Toolbar>
             </Container>
         </AppBar>
-    );
-};
-export default Header;
+  )
+}
+export default Header
