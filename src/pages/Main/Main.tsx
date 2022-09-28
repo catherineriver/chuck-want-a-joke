@@ -1,5 +1,5 @@
 import * as React from 'react'
-import ActionTitle from '../../features/ActionTitle/ActionTitle'
+import Question from '../../features/Question/Question'
 import Joke from '../../components/Joke/Joke'
 import ShowMoreButton from '../../features/ShowMoreButton/ShowMoreButton'
 import Box from '@mui/material/Box'
@@ -32,7 +32,7 @@ const Main: React.FC = () => {
     <Chuck>
         {categories.length > 0 && (
           <>
-            <ActionTitle
+            <Question
               previousCategory={previousCategory}
               categories={categories}
             />

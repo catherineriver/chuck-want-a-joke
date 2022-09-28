@@ -10,7 +10,7 @@ import { FormControl } from '@mui/material'
 import { useState } from 'react'
 import { ActionTitleProps } from '../../app/types'
 
-const ActionTitle: React.FC<ActionTitleProps> = ({
+const Question: React.FC<ActionTitleProps> = ({
   previousCategory,
   categories
 }) => {
@@ -63,4 +63,4 @@ const ActionTitle: React.FC<ActionTitleProps> = ({
     </Box>
   )
 }
-export default ActionTitle
+export default Question
