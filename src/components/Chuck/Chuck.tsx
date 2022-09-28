@@ -1,4 +1,4 @@
-import { Container } from '@mui/material'
+import { Container, Box } from '@mui/material'
 import React from 'react'
 
 interface ChuckProps {
@@ -10,43 +10,43 @@ const Chuck: React.FC<ChuckProps> = ({ children }) => {
     <Container
         maxWidth="xl"
         component="main"
-       sx={{
-         position: 'relative',
-         height: 'calc(100vh - 64px)',
-         display: 'flex',
-         overflow: 'hidden',
-         flexDirection: 'column',
-         '@media (max-width: 768px)': {
-           height: 'calc(100vh - 64px)'
-         },
-         '&::before': {
-           content: '""',
-           display: 'block',
-           background: 'url(https://i.ibb.co/zN5RwMK/Chuck.png)',
-           backgroundRepeat: 'no-repeat',
-           backgroundSize: 'contain',
-           backgroundPosition: 'bottom right',
-           position: 'absolute',
-           right: 0,
-           bottom: '-36px',
-           width: '40%',
-           height: '100%',
-           zIndex: '-1',
-           '@media (max-width: 320px)': {
-             display: 'none'
-           },
-           '@media (max-width: 425px)': {
-             width: '75%',
-             height: '50%'
-           },
-           '@media (max-width: 768px)': {
-             width: '60%',
-             bottom: '-100px',
-             right: '-30px'
-           }
-         }
-       }}
+        sx={{
+          position: 'relative',
+          minHeight: 'calc(100vh - 64px)',
+          display: 'flex',
+          overflow: 'hidden',
+          flexDirection: 'column'
+        }}
     >
+        <Box
+            sx={{
+              position: 'absolute',
+              right: 0,
+              bottom: '-36px',
+              width: '340px',
+              zIndex: '10',
+              height: '100%',
+              '@media (max-width: 425px)': {
+                width: '200px',
+                height: '280px',
+                bottom: '-100px'
+              },
+              '@media (min-width: 768px)': {
+                width: '290px'
+              },
+              '&::before': {
+                content: '""',
+                display: 'block',
+                background: 'url(https://i.ibb.co/zN5RwMK/Chuck.png)',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'contain',
+                backgroundPosition: 'bottom right',
+                height: '100%',
+                '@media (max-width: 320px)': {
+                  display: 'none'
+                }
+              }
+            }}/>
         {children}
     </Container>
   )

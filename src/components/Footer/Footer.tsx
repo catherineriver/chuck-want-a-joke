@@ -13,7 +13,8 @@ const Footer = () => {
           bottom: 0,
           width: '100%',
           flexGrow: 1,
-          display: { md: 'flex' }
+          display: { md: 'flex' },
+          background: '#fff'
         }}
       >
         <Button
