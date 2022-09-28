@@ -13,8 +13,7 @@ const RandomJoke: React.FC = () => {
   const [error, setError] = useState(null)
 
   const handleFetch = () => {
-    dispatch(fetchRandomJoke())
-      .catch((err) => setError(err))
+    dispatch(fetchRandomJoke()).catch((err) => setError(err))
   }
 
   useEffect(() => {
@@ -22,13 +21,23 @@ const RandomJoke: React.FC = () => {
   }, [])
 
   return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {status === 'succeeded' ? <Joke value={joke.value}/> : <CircularProgress />}
-            {error !== null && 'Sorry, no jokes today'}
-            <Box my={3} alignContent='center'>
-                <Button variant="contained" onClick={handleFetch}>another one</Button>
-            </Box>
-        </Box>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      {status === 'succeeded'
+        ? (
+        <Joke value={joke.value} />
+          )
+        : (
+        <CircularProgress />
+          )}
+      {error !== null && 'Sorry, no jokes today'}
+      <Box my={3} alignContent="center">
+        <Button variant="contained" onClick={handleFetch}>
+          another one
+        </Button>
+      </Box>
+    </Box>
   )
 }
 export default RandomJoke

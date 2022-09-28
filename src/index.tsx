@@ -17,17 +17,17 @@ const root = createRoot(container)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<App />}>
-                        <Route index element={<Main />} />
-                        <Route path="/about" element={<About />}/>
-                        <Route path="/random" element={<Random />}/>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Main />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/random" element={<Random />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 )

@@ -18,18 +18,20 @@ export const fetchCategories = createAsyncThunk('data/fetchData', async () => {
   return await response.json()
 })
 
-export const fetchJokeFromCategory = createAsyncThunk('category/fetchData',
+export const fetchJokeFromCategory = createAsyncThunk(
+  'category/fetchData',
   async (category: string) => {
-    const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
+    const response = await fetch(
+      `https://api.chucknorris.io/jokes/random?category=${category}`
+    )
     return await response.json()
-  })
+  }
+)
 
 export const actionGetData = createSlice({
   name: 'data',
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.pending, (state, action) => {
       state.status = 'pending'

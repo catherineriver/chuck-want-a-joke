@@ -5,10 +5,10 @@ import RandomJoke from '../../features/RandomJoke/RandomJoke'
 
 const Random: React.FC = () => {
   return (
-        <Container maxWidth="xl">
-            <PageTitle title="Random joke" align="center" />
-            <RandomJoke />
-        </Container>
+    <Container maxWidth="xl" component="main">
+      <PageTitle title="Random joke" align="center" />
+      <RandomJoke />
+    </Container>
   )
 }
 

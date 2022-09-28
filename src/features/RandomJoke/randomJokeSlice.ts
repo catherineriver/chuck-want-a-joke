@@ -9,18 +9,18 @@ const initialState: RandomJokeState = {
   error: null
 }
 
-export const fetchRandomJoke = createAsyncThunk('random_joke/fetch',
+export const fetchRandomJoke = createAsyncThunk(
+  'random_joke/fetch',
   async () => {
     const response = await fetch('https://api.chucknorris.io/jokes/random')
     return await response.json()
-  })
+  }
+)
 
 export const actionGetRandomJoke = createSlice({
   name: 'random_joke',
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchRandomJoke.pending, (state, action) => {
       state.status = 'pending'

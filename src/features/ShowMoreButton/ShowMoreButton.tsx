@@ -9,23 +9,25 @@ interface ButtonProps {
   initialCategory: string
 }
 
-const ShowMoreButton: React.FC<ButtonProps> = ({ previousCategory, initialCategory }) => {
+const ShowMoreButton: React.FC<ButtonProps> = ({
+  previousCategory,
+  initialCategory
+}) => {
   const [error, setError] = useState(null)
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
     dispatch(fetchJokeFromCategory(previousCategory || initialCategory))
       .then(() => localStorage.updateItem('category', previousCategory))
-      .catch(error => setError(error))
+      .catch((error) => setError(error))
   }
 
   return (
-        <Button
-            variant="contained"
-            onClick={handleClick}
-        >
-            {previousCategory ? `tell me joke about ${previousCategory}` : 'make me laugh'}
-        </Button>
+    <Button variant="contained" onClick={handleClick}>
+      {previousCategory
+        ? `tell me joke about ${previousCategory}`
+        : 'make me laugh'}
+    </Button>
   )
 }
 export default ShowMoreButton

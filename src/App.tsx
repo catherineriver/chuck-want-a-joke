@@ -7,13 +7,11 @@ import Footer from './components/Footer/Footer'
 
 function App () {
   return (
-      <>
-          <Header />
-          <Container maxWidth="xl" component='main'>
-              <Outlet/>
-          </Container>
-          <Footer />
-      </>
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
   )
 }
 
