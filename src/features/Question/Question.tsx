@@ -36,7 +36,7 @@ const Question: React.FC<ActionTitleProps> = ({
             xs: '1.5rem'
           }}
         >
-          Wanna hear joke about you and&nbsp;
+            Do you wanna hear joke about you and&nbsp;
           <FormControl variant="standard" sx={{ minWidth: 100 }}>
             <Select
               sx={{

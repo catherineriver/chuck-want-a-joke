@@ -23,16 +23,20 @@ const Chuck: React.FC<ChuckProps> = ({ children }) => {
               position: 'absolute',
               right: 0,
               bottom: '-36px',
-              width: '340px',
-              zIndex: '10',
-              height: '100%',
-              '@media (max-width: 425px)': {
+              width: '530px',
+              height: '70%',
+              zIndex: '5',
+              '@media (min-width: 780px) and (max-width: 1100px)': {
+                width: '450px',
+                height: '70%'
+              },
+              '@media (max-width: 780px)': {
+                width: '250px'
+              },
+              '@media (max-width: 480px)': {
                 width: '200px',
                 height: '280px',
                 bottom: '-100px'
-              },
-              '@media (min-width: 768px)': {
-                width: '290px'
               },
               '&::before': {
                 content: '""',
