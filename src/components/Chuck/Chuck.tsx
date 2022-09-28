@@ -12,12 +12,12 @@ const Chuck: React.FC<ChuckProps> = ({ children }) => {
         component="main"
        sx={{
          position: 'relative',
-         height: 'calc(100vh - 100px)',
+         height: 'calc(100vh - 64px)',
          display: 'flex',
          overflow: 'hidden',
          flexDirection: 'column',
          '@media (max-width: 768px)': {
-           height: 'calc(100vh - 145px)'
+           height: 'calc(100vh - 64px)'
          },
          '&::before': {
            content: '""',
