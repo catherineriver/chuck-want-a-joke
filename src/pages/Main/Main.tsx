@@ -43,7 +43,7 @@ const Main: React.FC = () => {
                   <Joke value={joke.value} />
                 </Box>
               )}
-              <Box mt={3} mb={{ xs: 2, md: 7 }} sx={{ width: { xs: '100%', md: '50%' } }}>
+              <Box mt={3} mb={{ xs: 10, md: 7 }} sx={{ width: { xs: '50%', md: '100%' } }}>
                 <ShowMoreButton
                   previousCategory={previousCategory}
                   initialCategory={categories[0]}

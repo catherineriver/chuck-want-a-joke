@@ -12,9 +12,7 @@ const Chuck: React.FC<ChuckProps> = ({ children }) => {
         component="main"
         sx={{
           position: 'relative',
-          minHeight: 'calc(100vh - 64px)',
           display: 'flex',
-          overflow: 'hidden',
           flexDirection: 'column'
         }}
     >
@@ -22,21 +20,21 @@ const Chuck: React.FC<ChuckProps> = ({ children }) => {
             sx={{
               position: 'absolute',
               right: 0,
-              bottom: '-36px',
+              bottom: 0,
               width: '530px',
               height: '70%',
               zIndex: '5',
-              '@media (min-width: 780px) and (max-width: 1100px)': {
-                width: '450px',
-                height: '70%'
+              '@media (min-width: 780px) and (max-width: 1110px)': {
+                width: '250px',
+                height: '50%'
               },
               '@media (max-width: 780px)': {
                 width: '250px'
               },
               '@media (max-width: 480px)': {
-                width: '200px',
-                height: '280px',
-                bottom: '-100px'
+                width: '140px',
+                height: '280px'
+                // bottom: '-100px'
               },
               '&::before': {
                 content: '""',

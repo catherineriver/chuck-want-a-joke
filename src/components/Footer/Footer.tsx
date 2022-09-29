@@ -1,22 +1,19 @@
 import * as React from 'react'
-import { Container, Box, Button } from '@mui/material'
+import { Container, Button } from '@mui/material'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import PinterestIcon from '@mui/icons-material/Pinterest'
 
 const Footer = () => {
   return (
-    <Container maxWidth="xl" component="footer">
-      <Box
-        sx={{
-          position: 'fixed',
-          bottom: 0,
-          width: '100%',
-          flexGrow: 1,
-          display: { md: 'flex' },
-          background: '#fff'
-        }}
-      >
+    <Container maxWidth="xl" component="footer"
+       sx={{
+         position: 'fixed',
+         bottom: 0,
+         flexGrow: 1,
+         display: { md: 'flex' },
+         background: '#fff'
+       }}>
         <Button
           component="a"
           href="https://www.instagram.com/chucknorris/"
@@ -38,7 +35,6 @@ const Footer = () => {
         >
           <PinterestIcon />
         </Button>
-      </Box>
     </Container>
   )
 }
