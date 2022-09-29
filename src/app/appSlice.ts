@@ -33,18 +33,18 @@ export const actionGetData = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCategories.pending, (state, action) => {
+    builder.addCase(fetchCategories.pending, (state) => {
       state.status = 'pending'
     })
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.status = 'succeeded'
       state.categories = action.payload
     })
-    builder.addCase(fetchCategories.rejected, (state, action) => {
+    builder.addCase(fetchCategories.rejected, (state) => {
       state.status = 'failed'
-      state.error = action.error.message
+      state.error = 'Houston, we have a problem.  Categories don\'t come now. Try to reload the page.'
     })
-    builder.addCase(fetchJokeFromCategory.pending, (state, action) => {
+    builder.addCase(fetchJokeFromCategory.pending, (state) => {
       state.status = 'pending'
     })
     builder.addCase(fetchJokeFromCategory.fulfilled, (state, action) => {
@@ -52,9 +52,9 @@ export const actionGetData = createSlice({
       state.previousCategory = action.payload.categories[0]
       state.joke.value = action.payload.value
     })
-    builder.addCase(fetchJokeFromCategory.rejected, (state, action) => {
+    builder.addCase(fetchJokeFromCategory.rejected, (state) => {
       state.status = 'failed'
-      state.error = action.error.message
+      state.error = 'Houston, we have a problem. We don\'t have any new joke. Try to reload the page.'
     })
   }
 })

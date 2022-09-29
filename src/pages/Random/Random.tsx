@@ -3,7 +3,7 @@ import PageTitle from '../../components/PageTitle/PageTitle'
 import { Container } from '@mui/material'
 import RandomJoke from '../../features/RandomJoke/RandomJoke'
 
-const Random: React.FC = () => {
+const Random = () => {
   return (
     <Container maxWidth="xl" component="main">
       <PageTitle title="Random joke" align="center" />

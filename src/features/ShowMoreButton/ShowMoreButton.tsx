@@ -2,7 +2,6 @@ import * as React from 'react'
 import { useAppDispatch } from '../../app/hooks'
 import { fetchJokeFromCategory } from '../../app/appSlice'
 import { Button } from '@mui/material'
-import { useState } from 'react'
 
 interface ButtonProps {
   previousCategory?: string
@@ -13,13 +12,11 @@ const ShowMoreButton: React.FC<ButtonProps> = ({
   previousCategory,
   initialCategory
 }) => {
-  const [error, setError] = useState(null)
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
-    dispatch(fetchJokeFromCategory(previousCategory || initialCategory))
+    void dispatch(fetchJokeFromCategory(previousCategory || initialCategory))
       .then(() => localStorage.updateItem('category', previousCategory))
-      .catch((error) => setError(error))
   }
 
   return (

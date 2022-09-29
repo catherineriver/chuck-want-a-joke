@@ -22,16 +22,16 @@ export const actionGetRandomJoke = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchRandomJoke.pending, (state, action) => {
+    builder.addCase(fetchRandomJoke.pending, (state) => {
       state.status = 'pending'
     })
     builder.addCase(fetchRandomJoke.fulfilled, (state, action) => {
       state.status = 'succeeded'
       state.joke = action.payload
     })
-    builder.addCase(fetchRandomJoke.rejected, (state, action) => {
+    builder.addCase(fetchRandomJoke.rejected, (state) => {
       state.status = 'failed'
-      state.error = action.error.message
+      state.error = 'Houston, we have a problem. We don\'t have any new joke. Try to reload the page.'
     })
   }
 })
